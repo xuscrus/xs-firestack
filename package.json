@@ -1,0 +1,25 @@
+{
+  "name": "xs-firesstack",
+  "version": "1.0.0",
+  "description": "",
+  "workspaces": [
+    "service/*"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev:firebase": "firebase emulators:start --export-on-exit=./.saved-data --import=./.saved-data --only auth,firestore,storage,functions,hosting,ui",
+    "dev:apps": "echo concurrently -n ad,pr  \"npm run dev:local --workspace @xs/admin-app\" \"npm run dev:local --workspace @xs/landing-app\"",
+    "deploy": "npm run deploy:dev",
+    "deploy:dev": "export FIREBASE_DEPLOY_ENV=dev && firebase deploy -P dev --except functions",
+    "deploy:production": "export FIREBASE_DEPLOY_ENV=prod && firebase deploy -P prod --except functions"
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "firebase-tools": "^13.5.0"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "projects": {
+    "default": "xs-firestack-dev",
+    "dev": "xs-firestack-dev",
+    "prod": "xs-firestack-prod"
+  },
+  "targets": {
+    "xs-firestack-dev": {
+      "hosting": {
+        "landing": [
+          "xs-firestack-dev"
+        ],
+        "admin": [
+          "admin-stack-xs-dev"
+        ]
+      }
+    },
+    "xs-firestack-prod": {
+      "hosting": {
+        "landing": [
+          "xs-firestack"
+        ],
+        "admin": [
+          "admin-stack-xs"
+        ]
+      }
+    }
+  },
+  "etags": {}
+}

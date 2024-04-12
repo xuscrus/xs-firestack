@@ -1,0 +1,70 @@
+{
+  "remoteconfig": {
+    "template": "service/remoteconfig.template.json"
+  },
+  "storage": {
+    "rules": "service/storage.rules"
+  },
+  "firestore": {
+    "rules": "service/firestore.rules",
+    "indexes": "service/firestore.indexes.json"
+  },
+  "functions": [
+    {
+      "source": "service/functions",
+      "codebase": "default",
+      "ignore": [
+        "node_modules",
+        ".git",
+        "firebase-debug.log",
+        "firebase-debug.*.log"
+      ],
+      "predeploy": [
+        "npm --prefix \"$RESOURCE_DIR\" run lint",
+        "npm --prefix \"$RESOURCE_DIR\" run build"
+      ]
+    }
+  ],
+  "hosting": [
+    {
+      "target": "admin",
+      "public": "apps/admin",
+      "ignore": []
+    },
+    {
+      "target": "landing",
+      "public": "apps/dist",
+      "ignore": []
+    }
+  ],
+  "emulators": {
+    "auth": {
+      "port": 9099
+    },
+    "functions": {
+      "port": 5001
+    },
+    "firestore": {
+      "port": 8080
+    },
+    "database": {
+      "port": 9000
+    },
+    "hosting": {
+      "port": 5050
+    },
+    "pubsub": {
+      "port": 8085
+    },
+    "storage": {
+      "port": 9199
+    },
+    "eventarc": {
+      "port": 9299
+    },
+    "ui": {
+      "enabled": true
+    },
+    "singleProjectMode": true
+  }
+}
